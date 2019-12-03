@@ -6,18 +6,16 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-import com.adventofcode.challenge2019.Day1;
-
 public class Day1Test {
 
     @Test
-    public void readFileToLongListGivenFileThenLongList() throws Exception {
+    public void readFileWithLinesToLongListGivenFileThenLongList() throws Exception {
         // Given
-        String inputFilePath = "./src/test/resources/LongTestList.data";
+        String inputFilePath = "./src/test/resources/LongLinesTestList.data";
         Day1 day = new Day1();
 
         // When
-        List<Long> longList = day.readFileToLongList(inputFilePath);
+        List<Long> longList = day.readFileWithLinesToLongList(inputFilePath);
 
         // Then
         assertThat(longList).isNotNull();

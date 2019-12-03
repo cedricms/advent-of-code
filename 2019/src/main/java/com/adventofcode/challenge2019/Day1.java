@@ -5,7 +5,7 @@ import java.util.List;
 public class Day1 extends Day {
 
     public Long processFuelNeedsPart1(String inputFilePath) {
-        List<Long> data = this.readFileToLongList(inputFilePath);
+        List<Long> data = this.readFileWithLinesToLongList(inputFilePath);
 
         Long fuelNeeds = 0L;
         for(Long moduleMass : data) {
@@ -26,7 +26,7 @@ public class Day1 extends Day {
     }
 
     public Long processFuelNeedsPart2(String inputFilePath) {
-        List<Long> data = this.readFileToLongList(inputFilePath);
+        List<Long> data = this.readFileWithLinesToLongList(inputFilePath);
 
         Long fuelNeeds = 0L;
         for(Long moduleMass : data) {
