@@ -25,13 +25,13 @@ public class Day1Test {
     }
 
     @Test
-    public void processFuelNeedsGiven12Then2() throws Exception {
+    public void processFuelNeedsPart1Given12Then2() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day1/Day1Test1.data";
         Day1 day = new Day1();
 
         // When
-        Long fuelNeeds = day.processFuelNeeds(inputFilePath);
+        Long fuelNeeds = day.processFuelNeedsPart1(inputFilePath);
 
         // Then
         assertThat(fuelNeeds).isNotNull();
@@ -39,13 +39,13 @@ public class Day1Test {
     }
 
     @Test
-    public void processFuelNeedsGiven14Then2() throws Exception {
+    public void processFuelNeedsPart1Given14Then2() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day1/Day1Test2.data";
         Day1 day = new Day1();
 
         // When
-        Long fuelNeeds = day.processFuelNeeds(inputFilePath);
+        Long fuelNeeds = day.processFuelNeedsPart1(inputFilePath);
 
         // Then
         assertThat(fuelNeeds).isNotNull();
@@ -53,13 +53,13 @@ public class Day1Test {
     }
 
     @Test
-    public void processFuelNeedsGiven1969Then654() throws Exception {
+    public void processFuelNeedsPart1Given1969Then654() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day1/Day1Test3.data";
         Day1 day = new Day1();
 
         // When
-        Long fuelNeeds = day.processFuelNeeds(inputFilePath);
+        Long fuelNeeds = day.processFuelNeedsPart1(inputFilePath);
 
         // Then
         assertThat(fuelNeeds).isNotNull();
@@ -67,13 +67,13 @@ public class Day1Test {
     }
 
     @Test
-    public void processFuelNeedsGiven100756Then33583() throws Exception {
+    public void processFuelNeedsPart1Given100756Then33583() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day1/Day1Test4.data";
         Day1 day = new Day1();
 
         // When
-        Long fuelNeeds = day.processFuelNeeds(inputFilePath);
+        Long fuelNeeds = day.processFuelNeedsPart1(inputFilePath);
 
         // Then
         assertThat(fuelNeeds).isNotNull();
@@ -81,16 +81,72 @@ public class Day1Test {
     }
 
     @Test
-    public void processFuelNeedsGivenChallengeFileThen3393938() throws Exception {
+    public void processFuelNeedsPart1GivenChallengeFileThen3393938() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day1/Day1Test.data";
         Day1 day = new Day1();
 
         // When
-        Long fuelNeeds = day.processFuelNeeds(inputFilePath);
+        Long fuelNeeds = day.processFuelNeedsPart1(inputFilePath);
 
         // Then
         assertThat(fuelNeeds).isNotNull();
         assertThat(fuelNeeds).isEqualTo(3393938L);
+    }
+
+    @Test
+    public void processFuelNeedsPart2Given14Then2() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day1/Day1Test2.data";
+        Day1 day = new Day1();
+
+        // When
+        Long fuelNeeds = day.processFuelNeedsPart2(inputFilePath);
+
+        // Then
+        assertThat(fuelNeeds).isNotNull();
+        assertThat(fuelNeeds).isEqualTo(2L);
+    }
+
+    @Test
+    public void processFuelNeedsPart2Given1969Then966() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day1/Day1Test3.data";
+        Day1 day = new Day1();
+
+        // When
+        Long fuelNeeds = day.processFuelNeedsPart2(inputFilePath);
+
+        // Then
+        assertThat(fuelNeeds).isNotNull();
+        assertThat(fuelNeeds).isEqualTo(966L);
+    }
+
+    @Test
+    public void processFuelNeedsPart2Given100756Then50346() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day1/Day1Test4.data";
+        Day1 day = new Day1();
+
+        // When
+        Long fuelNeeds = day.processFuelNeedsPart2(inputFilePath);
+
+        // Then
+        assertThat(fuelNeeds).isNotNull();
+        assertThat(fuelNeeds).isEqualTo(50346L);
+    }
+
+    @Test
+    public void processFuelNeedsPart2GivenChallengeFileThen5088037() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day1/Day1Test.data";
+        Day1 day = new Day1();
+
+        // When
+        Long fuelNeeds = day.processFuelNeedsPart2(inputFilePath);
+
+        // Then
+        assertThat(fuelNeeds).isNotNull();
+        assertThat(fuelNeeds).isEqualTo(5088037L);
     }
 }
