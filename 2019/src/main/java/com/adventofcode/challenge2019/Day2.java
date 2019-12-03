@@ -15,21 +15,21 @@ public class Day2 extends Day {
     }
 
     private int[] processIntcodePart1BusinessRules(int[] data) {
-        int i = 0;
-        while (i < data.length) {
-                int opcode = data[i];
+        int instructionPointer = 0;
+        while (instructionPointer < data.length) {
+                int instruction = data[instructionPointer];
 
-            if (opcode != 99) {
-                int position1 = data[i + 1];
-                int position2 = data[i + 2];
-                int position3 = data[i + 3];
+            if (instruction != 99) {
+                int parameter1 = data[instructionPointer + 1];
+                int parameter2 = data[instructionPointer + 2];
+                int parameter3 = data[instructionPointer + 3];
 
-                switch (opcode) {
+                switch (instruction) {
                     case 1 :
-                        data[position3] = data[position1] + data[position2];
+                        data[parameter3] = data[parameter1] + data[parameter2];
                         break;
                     case 2 :
-                        data[position3] = data[position1] * data[position2];
+                        data[parameter3] = data[parameter1] * data[parameter2];
                         break;
                     default :
                         break;
@@ -38,7 +38,7 @@ public class Day2 extends Day {
                 break;
             }
 
-            i = i + 4;
+            instructionPointer = instructionPointer + 4;
         }
 
         return data;
