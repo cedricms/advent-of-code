@@ -1,7 +1,8 @@
 package com.adventofcode.challenge2019;
 
-import org.junit.Test;
+import java.util.List;
 
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,9 +11,9 @@ import com.adventofcode.challenge2019.Day1;
 public class Day1Test {
 
     @Test
-    public void readFileToLongListGivenFileThenLongList() Exception {
+    public void readFileToLongListGivenFileThenLongList() throws Exception {
         // Given
-        String inputFilePath = "LongTestList.txt";
+        String inputFilePath = "./src/test/resources/LongTestList.txt";
         Day1 day = new Day1();
 
         // When
@@ -20,5 +21,6 @@ public class Day1Test {
 
         // Then
         assertThat(longList).isNotNull();
+        assertThat(longList.size()).isEqualTo(4);
     }
 }
