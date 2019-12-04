@@ -107,4 +107,34 @@ public class Day2Test {
 
         // The solution is : 3306701
     }
+
+    @Test
+    public void findNounAndVerbByOutputGivenFileAnd3306701Then1202() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day2/Day2Test.data";
+        String output = "3306701";
+        Day2 day = new Day2();
+
+        // When
+        String result = day.findNounAndVerbByOutput(inputFilePath, output);
+
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isEqualTo("1202");
+    }
+
+    @Test
+    public void findNounAndVerbByOutputGivenFileAnd19690720Then7621() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day2/Day2Test.data";
+        String output = "19690720";
+        Day2 day = new Day2();
+
+        // When
+        String result = day.findNounAndVerbByOutput(inputFilePath, output);
+
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).isEqualTo("7621");
+    }
 }

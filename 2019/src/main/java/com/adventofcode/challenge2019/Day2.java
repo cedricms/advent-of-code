@@ -90,4 +90,27 @@ public class Day2 extends Day {
 
         return data;
     }
+
+    public String findNounAndVerbByOutput(String inputFilePath, String output) {
+        String result = "";
+
+        for (int noun = 0; noun <= 99; noun++) {
+            for (int verb = 0; verb <= 99; verb++) {
+                List<Integer> dataList = this.readFileWithCommasToIntegerList(inputFilePath);
+
+                int[] data = convertListToIntArray(dataList);
+
+                data[1] = noun;
+                data[2] = verb;
+
+                data = processIntcodePart1BusinessRules(data);
+
+                if (output.equals(Integer.toString(data[0]))) {
+                    return Integer.toString((100 * noun) + verb);
+                }
+            }
+        }
+
+        return result;
+    }
 }

@@ -24,3 +24,7 @@ hs_err_pid*
 
 # Various builds
 target/
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings/
