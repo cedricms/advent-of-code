@@ -95,7 +95,31 @@ public class Day3 extends Day {
     }
 
     private List<Point> findIntersections(List<Segment> horizontalSegments, List<Segment> verticalSegments) {
-        return new ArrayList();
+        List<Point> intersections = new ArrayList();
+
+        for (Segment horizontalSegment : horizontalSegments) {
+            for (Segment verticalSegment : verticalSegments) {
+                Point intersection = getIntersection(horizontalSegment, verticalSegment);
+
+                if (intersection != null) {
+                    intersections.add(intersection);
+                }
+            }
+        }
+
+        return intersections;
+    }
+
+    private Point getIntersection(Segment horizontalSegment, Segment verticalSegment) {
+        int verticalX = verticalSegment.getX1();
+        if ((horizontalSegment.getX1() < verticalX) && (verticalX < horizontalSegment.getX2())) {
+            int horizontalY = horizontalSegment.getY1();
+            if ((verticalSegment.getY1() < horizontalY) && (horizontalY < verticalSegment.getY2())) {
+                return new Point(verticalX, horizontalY);
+            }
+        }
+
+        return null;
     }
 
     private Point getClosestIntersection(List<Point> intersections) {
