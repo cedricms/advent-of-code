@@ -22,7 +22,7 @@ public class Segment {
     }
 
     public Segment(int x1, int y1, int x2, int y2) {
-        super();
+        this();
 
         // Order left to right
         if (x1 < x2) {

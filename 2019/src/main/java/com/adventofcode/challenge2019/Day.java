@@ -55,4 +55,16 @@ public abstract class Day {
 
         return data;
     }
+
+    public List<String> readFileWithLinesToStringList(String inputFilePath) {
+        List<String> data = new ArrayList();
+
+		try (Stream<String> stream = Files.lines(Paths.get(inputFilePath))) {
+			stream.forEach(line -> data.add(line));
+		} catch (IOException ioe) {
+			log.error("Unable to read the following file :" + inputFilePath, ioe);
+        }
+
+        return data;
+    }
 }
