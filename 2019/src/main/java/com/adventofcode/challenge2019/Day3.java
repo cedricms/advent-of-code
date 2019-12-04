@@ -15,6 +15,7 @@ public class Day3 extends Day {
         List<Segment> verticalSegments = findVerticalSegments(wires.get(1));
 
         List<Point> intersections = findIntersections(horizontalSegments, verticalSegments);
+        System.out.println("intersections : " + intersections.size());
 
         Point closestIntersection = getClosestIntersection(intersections);
 
@@ -43,9 +44,8 @@ public class Day3 extends Day {
     }
 
     private Segment getSegment(Point currentPosition, String deplacement) {
-        Segment segment = new Segment();
-        segment.setX1(currentPosition.getX());
-        segment.setY1(currentPosition.getY());
+        int x1 = currentPosition.getX();
+        int y1 = currentPosition.getY();
 
         char direction = deplacement.charAt(0);
         int deplacementLength = Integer.parseInt(deplacement.substring(1));
@@ -67,10 +67,7 @@ public class Day3 extends Day {
                 break;
         }
 
-        segment.setX2(currentPosition.getX());
-        segment.setY2(currentPosition.getY());
-
-        return segment;
+        return new Segment(x1, y1, currentPosition.getX(), currentPosition.getY());
     }
 
     private List<Segment> findVerticalSegments(String wire) {
@@ -111,6 +108,10 @@ public class Day3 extends Day {
     }
 
     private Point getIntersection(Segment horizontalSegment, Segment verticalSegment) {
+        System.out.println("Horizontal : [(" + horizontalSegment.getX1() + ", " + horizontalSegment.getY1()
+            + ", " + horizontalSegment.getX2() + ", " + horizontalSegment.getY2() + ")]"
+            + " Vertical : [(" + verticalSegment.getX1() + ", " + verticalSegment.getY1()
+            + ", " + verticalSegment.getX2() + ", " + verticalSegment.getY2() + ")]");
         int verticalX = verticalSegment.getX1();
         if ((horizontalSegment.getX1() < verticalX) && (verticalX < horizontalSegment.getX2())) {
             int horizontalY = horizontalSegment.getY1();

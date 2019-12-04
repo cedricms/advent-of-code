@@ -25,7 +25,7 @@ public class Segment {
         this();
 
         // Order left to right
-        if (x1 < x2) {
+        if (x1 <= x2) {
             this.x1 = x1;
             this.y1 = y1;
 
