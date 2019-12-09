@@ -133,4 +133,60 @@ public class Day3 extends Day {
     private int getManhattenDistance(Point point) {
         return Math.abs(point.getX()) + Math.abs(point.getY());
     }
+
+    public int findFewestCombinedStepsWiresMustTakeToReachAnIntersection(String inputFilePath) {
+        List<String> wires = readFileWithLinesToStringList(inputFilePath);
+
+        String wire1 = wires.get(0);
+        List<Segment> wire1Segments = findSegments(wire1);
+        String wire2 = wires.get(1);
+        List<Segment> wire2Segments = findSegments(wire2);
+
+        List<Point> intersections = findIntersections(wire1Segments, wire2Segments);
+
+        return getFewestCombinedStepsWiresMustTakeToReachAnIntersection(intersections, wire1Segments, wire2Segments);
+    }
+
+    private int getFewestCombinedStepsWiresMustTakeToReachAnIntersection(List<Point> intersections, List<Segment> wire1Segments, List<Segment> wire2Segments) {
+        int minCombinedSteps = 0;
+
+        for (Point intersection : intersections) {
+            int distanceToIntersection1 = getDistanceToIntersection(intersection, wire1Segments);
+            int distanceToIntersection2 = getDistanceToIntersection(intersection, wire2Segments);
+
+            int combinedDistances = distanceToIntersection1 + distanceToIntersection2;
+
+            if (minCombinedSteps == 0
+                || combinedDistances < minCombinedSteps) {
+                minCombinedSteps = combinedDistances;
+            }
+        }
+
+        return minCombinedSteps;
+    }
+
+    private int getDistanceToIntersection(Point intersection, List<Segment> wireSegments) {
+        int distance = 0;
+
+        Point currentPoint = new Point();
+
+        for (Segment wireSegment : wireSegments) {
+            if (wireSegment.intersectsPoint(intersection)) {
+                Segment lastSegment = new Segment(currentPoint.getX(), currentPoint.getY()
+                                                , intersection.getX(), intersection.getY());
+                return distance + lastSegment.getLength();
+            } else {
+                if (wireSegment.getX1() == currentPoint.getX()
+                    && wireSegment.getY1() == currentPoint.getY()) {
+                    currentPoint = new Point(wireSegment.getX2(), wireSegment.getY2());
+                } else {
+                    currentPoint = new Point(wireSegment.getX1(), wireSegment.getY1());
+                }
+
+                distance = distance + wireSegment.getLength();
+            }
+        }
+
+        return distance;
+    }
 }

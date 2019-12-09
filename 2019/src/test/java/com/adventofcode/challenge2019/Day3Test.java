@@ -98,7 +98,7 @@ public class Day3Test {
     }
 
     @Test
-    public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenPart1FileThen135() throws Exception {
+    public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenPart1FileThen721() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day3/Day3Test.data";
         Day3 day = new Day3();
@@ -108,5 +108,44 @@ public class Day3Test {
 
         // Then
         assertThat(manhattanDistance).isEqualTo(721);
+    }
+
+    @Test
+    public void findFewestCombinedStepsWiresMustTakeToReachAnIntersectionGivenFile1Then610() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day3/Day3Test1.data";
+        Day3 day = new Day3();
+
+        // When
+        int fewestCombinedStepsWiresMustTakeToReachAnIntersection = day.findFewestCombinedStepsWiresMustTakeToReachAnIntersection(inputFilePath);
+
+        // Then
+        assertThat(fewestCombinedStepsWiresMustTakeToReachAnIntersection).isEqualTo(610);
+    }
+
+    @Test
+    public void findFewestCombinedStepsWiresMustTakeToReachAnIntersectionFile2Then410() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day3/Day3Test2.data";
+        Day3 day = new Day3();
+
+        // When
+        int fewestCombinedStepsWiresMustTakeToReachAnIntersection = day.findFewestCombinedStepsWiresMustTakeToReachAnIntersection(inputFilePath);
+
+        // Then
+        assertThat(fewestCombinedStepsWiresMustTakeToReachAnIntersection).isEqualTo(410);
+    }
+
+    @Test
+    public void findFewestCombinedStepsWiresMustTakeToReachAnIntersectionPart1FileThen7388() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day3/Day3Test.data";
+        Day3 day = new Day3();
+
+        // When
+        int fewestCombinedStepsWiresMustTakeToReachAnIntersection = day.findFewestCombinedStepsWiresMustTakeToReachAnIntersection(inputFilePath);
+
+        // Then
+        assertThat(fewestCombinedStepsWiresMustTakeToReachAnIntersection).isEqualTo(7388);
     }
 }

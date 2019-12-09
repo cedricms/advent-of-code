@@ -58,4 +58,28 @@ public class Segment {
     public boolean isVertical() {
         return x1 == x2;
     }
+
+    public boolean intersectsPoint(Point point) {
+        if (this.isHorizontal()) {
+            if (point.getY() == this.getY1()) {
+                if (this.getX1() <= point.getX()
+                    && point.getX() <= this.getX2()) {
+                    return true;
+                }
+            }
+        } else if (this.isVertical()) {
+            if (point.getX() == this.getX1()) {
+                if (this.getY1() <= point.getY()
+                    && point.getY() <= this.getY2()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public int getLength() {
+        return Math.abs(this.getX1() - this.getX2()) + Math.abs(this.getY1() - this.getY2());
+    }
 }
