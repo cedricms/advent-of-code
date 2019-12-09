@@ -11,11 +11,12 @@ public class Day3 extends Day {
     public int findManhattanDistanceFromCentralPortToClosestIntersection(String inputFilePath) {
         List<String> wires = readFileWithLinesToStringList(inputFilePath);
 
-        List<Segment> wire1Segments = findSegments(wires.get(0));
-        List<Segment> wire2Segments = findSegments(wires.get(1));
+        String wire1 = wires.get(0);
+        List<Segment> wire1Segments = findSegments(wire1);
+        String wire2 = wires.get(1);
+        List<Segment> wire2Segments = findSegments(wire2);
 
         List<Point> intersections = findIntersections(wire1Segments, wire2Segments);
-        System.out.println("intersections : " + intersections.size());
 
         Point closestIntersection = getClosestIntersection(intersections);
 
@@ -33,6 +34,7 @@ public class Day3 extends Day {
             String deplacement = deplacements[i];
 
             Segment segment = getSegment(currentPosition, deplacement);
+
             segments.add(segment);
         }
 
@@ -76,8 +78,6 @@ public class Day3 extends Day {
                 if (intersection != null) {
                     if (!intersection.equals(new Point(0, 0))) {
                         intersections.add(intersection);
-                        System.out.println("Intersection : (" + intersection.getX() + ", "
-                            + intersection.getY() + ")");
                     }
                 }
             }
@@ -87,28 +87,28 @@ public class Day3 extends Day {
     }
 
     private Point getIntersection(Segment wire1Segment, Segment wire2Segment) {
-        System.out.println("Wire 1 : [(" + wire1Segment.getX1() + ", " + wire1Segment.getY1()
-            + "), (" + wire1Segment.getX2() + ", " + wire1Segment.getY2() + ")]"
-            + " Wire 2 : [(" + wire2Segment.getX1() + ", " + wire2Segment.getY1()
-            + "), (" + wire2Segment.getX2() + ", " + wire2Segment.getY2() + ")]");
-
-
         // Case wire 1 horizontal and wire 2 vertical or the oposite
-        if (wire2Segment.getX1() == wire2Segment.getX2()) {
-            int verticalX = wire2Segment.getX1();
-            if ((wire1Segment.getX1() <= verticalX) && (verticalX <= wire1Segment.getX2())) {
-                int horizontalY = wire1Segment.getY1();
-                if ((wire1Segment.getY1() <= horizontalY) && (horizontalY <= wire1Segment.getY2())) {
-                    return new Point(verticalX, horizontalY);
-                }
+        if (wire1Segment.isHorizontal()) {
+            if (wire2Segment.isVertical()) {
+                return getSegmentIntersection(wire1Segment, wire2Segment);
             }
-        } else if (wire1Segment.getX1() == wire1Segment.getX2()) {
-            int verticalX = wire1Segment.getX1();
-            if ((wire2Segment.getX1() <= verticalX) && (verticalX <= wire2Segment.getX2())) {
-                int horizontalY = wire2Segment.getY1();
-                if ((wire2Segment.getY1() <= horizontalY) && (horizontalY <= wire2Segment.getY2())) {
-                    return new Point(verticalX, horizontalY);
-                }
+        } else if (wire2Segment.isHorizontal()) {
+            if (wire1Segment.isVertical()) {
+                return getSegmentIntersection(wire2Segment, wire1Segment);
+            }
+        }
+
+        return null;
+    }
+
+    private Point getSegmentIntersection(Segment horizontal, Segment vertical) {
+        int verticalX = vertical.getX1();
+
+        if ((horizontal.getX1() <= verticalX) && (verticalX <= horizontal.getX2())) {
+            int horizontalY = horizontal.getY1();
+
+            if ((vertical.getY1() <= horizontalY) && (horizontalY <= vertical.getY2())) {
+                return new Point(verticalX, horizontalY);
             }
         }
 

@@ -24,19 +24,38 @@ public class Segment {
     public Segment(int x1, int y1, int x2, int y2) {
         this();
 
-        // Order left to right
+        // Order left to right and down to up
         if (x1 <= x2) {
             this.x1 = x1;
-            this.y1 = y1;
-
             this.x2 = x2;
-            this.y2 = y2;
+
+            if (y1 <= y2) {
+                this.y1 = y1;
+                this.y2 = y2;
+            } else {
+                this.y1 = y2;
+                this.y2 = y1;
+            }
         } else {
             this.x1 = x2;
-            this.y1 = y2;
-
             this.x2 = x1;
-            this.y2 = y1;
+
+            if (y1 <= y2) {
+                this.y1 = y2;
+                this.y2 = y1;
+            } else {
+                this.y1 = y1;
+                this.y2 = y2;
+            }
+
         }
+    }
+
+    public boolean isHorizontal() {
+        return y1 == y2;
+    }
+
+    public boolean isVertical() {
+        return x1 == x2;
     }
 }

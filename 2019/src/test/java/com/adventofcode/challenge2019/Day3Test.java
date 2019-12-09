@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class Day3Test {
-/*
+
     @Test
     public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenFileNoIntersectionThen0() throws Exception {
         // Given
@@ -33,7 +33,7 @@ public class Day3Test {
     }
 
     @Test
-    public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenFileSimpleInversedIntersectionThen0() throws Exception {
+    public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenFileSimpleInversedIntersectionThen5() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day3/Day3TestSimpleInversedIntersection.data";
         Day3 day = new Day3();
@@ -43,6 +43,19 @@ public class Day3Test {
 
         // Then
         assertThat(manhattanDistance).isEqualTo(5);
+    }
+
+    @Test
+    public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenFileDoubleIntersectionThen6() throws Exception {
+        // Given
+        String inputFilePath = "./src/test/resources/Day3/Day3TestDoubleIntersection.data";
+        Day3 day = new Day3();
+
+        // When
+        int manhattanDistance = day.findManhattanDistanceFromCentralPortToClosestIntersection(inputFilePath);
+
+        // Then
+        assertThat(manhattanDistance).isEqualTo(6);
     }
 
     @Test
@@ -57,7 +70,7 @@ public class Day3Test {
         // Then
         assertThat(manhattanDistance).isEqualTo(6);
     }
-*/
+
     @Test
     public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenFile1Then159() throws Exception {
         // Given
@@ -70,7 +83,7 @@ public class Day3Test {
         // Then
         assertThat(manhattanDistance).isEqualTo(159);
     }
-/*
+
     @Test
     public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenFile2Then135() throws Exception {
         // Given
@@ -83,8 +96,8 @@ public class Day3Test {
         // Then
         assertThat(manhattanDistance).isEqualTo(135);
     }
-*/
-    /*@Test
+
+    @Test
     public void findManhattanDistanceFromCentralPortToClosestIntersectionGivenPart1FileThen135() throws Exception {
         // Given
         String inputFilePath = "./src/test/resources/Day3/Day3Test.data";
@@ -94,6 +107,6 @@ public class Day3Test {
         int manhattanDistance = day.findManhattanDistanceFromCentralPortToClosestIntersection(inputFilePath);
 
         // Then
-        assertThat(manhattanDistance).isEqualTo(135);
-    }*/
+        assertThat(manhattanDistance).isEqualTo(721);
+    }
 }
