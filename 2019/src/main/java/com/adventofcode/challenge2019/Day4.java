@@ -3,8 +3,22 @@ package com.adventofcode.challenge2019;
 public class Day4 extends Day {
 
     public int getNumberOfPasswords(String input) {
+        String[] inputValues = input.split("-");
 
-        return 0;
+        String minString = inputValues[0];
+        int minInt = Integer.parseInt(minString);
+        String maxString = inputValues[1];
+        int maxInt = Integer.parseInt(maxString);
+
+        int result = 0;
+
+        for(int i = minInt; i <= maxInt; i++) {
+            if (isPasswordValid(Integer.toString(i))) {
+                result++;
+            }
+        }
+
+        return result;
     }
 
     public boolean isPasswordValid(String password) {
